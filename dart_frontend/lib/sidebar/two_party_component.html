@@ -1,0 +1,65 @@
+<div class="flex-column two-party">
+  <!-- Candidates and seat icon -->
+  <div class="flex-row cross-center candidate-and-party">
+    <!-- Left candidate -->
+    <div class="flex-row cross-center flex-grow">
+      <candidateimg class="left" [candidate]="left == null ? null : left.candidate"></candidateimg>
+      <div class="flex-column flex-grow">
+        <template [ngIf]="left != null">
+          <span class="font-small">{{left.candidate.lastName}}</span>
+          <span class="font-mid" [style.color]="left.party.color"><b>{{left.party.name}}</b>,
+            {{left.candidate.preferenceVotesInElectorate.percentage / 100 | percent:'1.1-1'}}
+          </span>
+        </template>
+      </div>
+    </div>
+    <!--
+    Chair. This is ic_seat_electorate_results.svg, but with metadata stripped and inlined.
+    We inline it so we can apply custom styling.
+    -->
+    <svg width="24px" height="24px" viewBox="0 0 24 24">
+      <path [attr.fill]="seatColor" d="M17,13 L7,13 L7,5 C7,3.9 7.9,3 9,3 L15,3 C16.1,3 17,3.9 17,5 L17,13 Z M2,13 L5,13 L5,10 L2,10 L2,13 Z M19,13 L22,13 L22,10 L19,10 L19,13 Z M4,18 L4,21 L7,21 L7,18 L17,18 L17,21 L20,21 L20,15 L4,15 L4,18 Z"></path>
+    </svg>
+
+    <!-- Right candidate -->
+    <div class="flex-row cross-center flex-grow">
+      <div class="flex-column flex-grow" style="text-align:right;">
+        <template [ngIf]="right != null">
+          <span class="font-small">{{right.candidate.lastName}}</span>
+          <span class="font-mid" [style.color]="right.party.color"><b>{{right.party.name}}</b>,
+            {{right.candidate.preferenceVotesInElectorate.percentage / 100 | percent:'1.1-1'}}
+          </span>
+        </template>
+      </div>
+      <candidateimg class="right" [candidate]="right == null ? null : right.candidate"></candidateimg>
+    </div>
+  </div>
+  <!-- The vote bar -->
+  <!--
+  TODO(ftamp): Work out how to implement the dashed line at 50%, given that this container could be
+  of flexible width.
+  -->
+  <svg
+    class="votebar" width="100%" height="10px"
+    viewBox="0, 0, 100, 10" preserveAspectRatio="none" >
+    <!-- Background -->
+    <rect x="0" y="0" width="100" height="10" fill="#E1E1E1" />
+    <!-- Left -->
+    <rect *ngIf="left != null"
+      y="0" height="10"
+      x="0"
+      [attr.width]="left.candidate.preferenceVotesInElectorate.percentage"
+      [attr.fill]="left.party.color" />
+    <rect
+      *ngIf="right != null"
+      y="0" height="10"
+      [attr.x]="100 - right.candidate.preferenceVotesInElectorate.percentage"
+      [attr.width]="right.candidate.preferenceVotesInElectorate.percentage"
+      [attr.fill]="right.party.color" />
+  </svg>
+  <!-- The numbers under the vote bar. -->
+  <div class="flex-row font-small-grey">
+    <div class="flex-grow">{{msg_num_votes_left}}</div>
+    <div class="flex-grow" style="text-align:right;">{{msg_num_votes_right}}</div>
+  </div>
+</div>

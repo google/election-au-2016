@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Interactive Election Map 2016</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500,400,300,100" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+    <link rel="stylesheet" href="/static/styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Find your electorate, see which candidates are running, locate your nearest polling booth or discover which ones are offering sausage sizzles and cake stalls. On election day, the map will update with real-time election results." />
+    <meta property="og:url" content="https://ausvotes.withgoogle.com" />
+    <meta property="og:title" content="Google Interactive Election Map 2016" />
+    <meta property="og:description" content="Find your electorate, see which candidates are running, locate your nearest polling booth or discover which ones are offering sausage sizzles and cake stalls. On election day, the map will update with real-time election results." />
+    <meta property="og:image" content="http://ausvotes.withgoogle.com/static/banner.png" />
+    <meta property="og:image:secure_url" content="https://ausvotes.withgoogle.com/static/banner.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@googledownunder">
+    <meta name="twitter:title" content="Google Interactive Election Map 2016">
+    <meta name="twitter:description" content="Find your electorate, see which candidates are running, locate your nearest polling booth or discover which ones are offering sausage sizzles and cake stalls. On election day, the map will update with real-time election results.">
+    <meta name="twitter:image" content="http://ausvotes.withgoogle.com/static/banner.png">
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{.MAPS_API_KEY}}&libraries=geometry,places&language={{.Language}}"></script>
+    <script type="pub/fnx_config"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-79490816-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="loading">
+      <img alt="Loading..." src="/static/loading.gif"/>
+    </div>
+    <my-app></my-app>
+    <script src="/static/main.dart.js"></script>
+  </body>
+</html>

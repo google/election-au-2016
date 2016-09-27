@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_pin">
+            <g filter="url(#filter-1)" transform="translate(12.000000, 4.000000)">
+                <path d="M12,0 C5.376,0 0,5.43030303 0,12.1212121 C0,21.2606061 10.104,26.0121212 11.292,39.0545455 C11.328,39.4181818 11.628,39.6969697 12,39.6969697 C12.372,39.6969697 12.672,39.4181818 12.708,39.0545455 C13.896,26.0121212 24,21.2606061 24,12.1212121 C24,5.43030303 18.624,0 12,0" id="Fill-2" fill="#DB4437"></path>
+                <path d="M12,7.87878788 C14.3196,7.87878788 16.2,9.77818182 16.2,12.1212121 C16.2,14.4642424 14.3196,16.3636364 12,16.3636364 C9.6804,16.3636364 7.8,14.4642424 7.8,12.1212121 C7.8,9.77818182 9.6804,7.87878788 12,7.87878788" id="Fill-4" fill="#7B231E"></path>
+                <path d="M12,0.303030303 C18.564,0.303030303 23.904,5.63636364 24,12.2545455 L24,12.1212121 C24,5.43030303 18.624,0 12,0 C5.376,0 0,5.43030303 0,12.1212121 L0,12.2545455 C0.096,5.63636364 5.436,0.303030303 12,0.303030303" id="Fill-6" fill="#FFFFFF"></path>
+                <path d="M12.708,38.7515152 C12.672,39.1151515 12.372,39.3939394 12,39.3939394 C11.628,39.3939394 11.328,39.1151515 11.292,38.7515152 C10.104,25.7818182 0.096,21.0060606 0.012,11.9515152 L0.012,12.1212121 C0.012,21.2606061 10.116,26.0121212 11.304,39.0545455 C11.34,39.4181818 11.64,39.6969697 12.012,39.6969697 C12.384,39.6969697 12.684,39.4181818 12.72,39.0545455 C13.896,26.0121212 24,21.2606061 24,12.1212121 L24,11.9515152 C23.904,20.9939394 13.896,25.769697 12.708,38.7515152" id="Fill-8" fill="#3E2723"></path>
+            </g>
+        </g>
+    </g>
+</svg>

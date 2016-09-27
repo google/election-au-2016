@@ -1,0 +1,22 @@
+<!--
+`display: block` is required so that this stays visually centered.
+Otherwise, `display: inline` is used, and you get space on the bottom because of paragraph height.
+-->
+<svg style="display: block;" class="candidate-image" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="circle-clip">
+      <circle cx="50" cy="50" r="50"></circle>
+    </clipPath>
+  </defs>
+  <circle cx="50" cy="50" r="50" fill="#bdbdbd"></circle>
+  <template [ngIf]="!nullCandidate">
+    <text
+      x="50" y="50"
+      text-anchor="middle"
+      dominant-baseline="central">{{initials}}</text>
+    <image
+      [attr.xlink:href]="profileUrl"
+      clip-path="url(#circle-clip)"
+      x="0" y="0" height="100" width="100" />
+    </template>
+</svg>

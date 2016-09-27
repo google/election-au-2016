@@ -1,0 +1,105 @@
+<div class="page">
+  <!-- Share / Embed Dialog -->
+  <template [ngIf]="shareLinkURL != null || embedMapText != null">
+    <div (click)="hideShareAndEmbed()" class="modal-screen"></div>
+    <div class="modal-container">
+      <div class="share-dialog-frame">
+        <div class="dialog">
+          <div class="content">
+            <img class="close"
+              (click)="hideShareAndEmbed()"
+              alt="{{msg_close}}"
+              src="/static/ic_reset_search.png"/>
+            <template [ngIf]="shareLinkURL != null">
+              <h1>{{msg_share_link}}</h1>
+              <input type="text" [value]="shareLinkURL"/>
+            </template>
+            <template [ngIf]="embedMapText != null">
+              <h1>{{msg_embed_map}}</h1>
+              <input type="text" [value]="embedMapText"/>
+            </template>
+            <div class="message">
+              {{msg_copy_link_from_address_bar}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <!-- Actual layout -->
+  <div class="sidebar"
+    [class.shown]="sideBarShow"
+    [class.hidden]="sideBarHide">
+    <div class="header" [style.background-color]="color">
+      <search></search>
+      <div class="info">
+        <h1>
+          <span class="trail" *ngIf="electorateName != null">
+            <span class="parent" (click)="viewNation()">AU</span> >
+          </span>
+          {{msg_region_name}}
+        </h1>
+        <div class="facts">
+          {{msg_region_area}} &middot; {{msg_region_electors}}
+        </div>
+        <div class="party">
+          <img class="seat" src="/static/seat.svg" />
+          {{winningName}}
+        </div>
+      </div>
+    </div>
+    <div class="content" id="sidebar-content">
+      <nation
+        *ngIf="electorateName == null && nation != null"
+        [nation]="nation"></nation>
+      <electorate
+        *ngIf="electorateName != null && electorate != null"
+        [electorate]="electorate"
+        [lastUpdated]="lastUpdated"
+        [liveResults]="nation != null && !nation.historic"
+        [pollingPlaces]="placesInElectorate"
+        [election]="election"></electorate>
+    </div>
+    <div class="share-line">
+      <div class="open-external">
+        <a target="_blank" href="https://election.google.com.au/">{{msg_open_external}}
+          <img class="open-external-image" src="/static/ic_exit_to_search.png"/>
+        </a>
+      </div>
+      <div class="share-link" (click)="shareLink()">
+        <img src="/static/ic_share.png"/><br/>
+        {{msg_share_link}}
+      </div>
+      <div class="share-link" (click)="embedMap()">
+        <img src="/static/ic_embed.png"/><br/>
+        {{msg_embed_map}}
+      </div>
+    </div>
+    <div class="attribution">
+      <template [ngIf]="electorateName != null && nation != null && nation.historic">
+        <span [innerHTML]="msg_sausage_sizzle_data_provided_by"></span><br>
+      </template>
+      <a target="_blank" href="https://docs.google.com/forms/d/1szD8lqOWN71Ge4iPQ-p8u69Vfz8cnS_iGmnVFAeERY0/viewform">
+      {{msg_send_feedback}}</a>
+      <span>|</span>
+      <span [innerHTML]="msg_data_sourced_from_aec"></span>
+    </div>
+    <language *ngIf="languages_enabled && sideBarShow"></language>
+  </div>
+  <div class="shrinky"
+    [class.shown]="sideBarShow"
+    [class.hidden]="sideBarHide"
+    (click)="toggleSidebar()">
+    <img *ngIf="sideBarShow" alt="Hide" src="/static/ic_arrow_collapse.svg"/>
+    <img *ngIf="sideBarHide" alt="Show" src="/static/ic_arrow_expand.svg"/>
+  </div>
+  <map
+    class="map"
+    [election]="election"
+    [pageState]="pageState"
+    [electorateSpatial]="electorateSpatialPayload"
+    [pollingPlace]="pollingPlacePayload"
+    [electorateLabel]="labelPayload" >
+  </map>
+  <search class="search-above-map"></search>
+</div>

@@ -1,0 +1,42 @@
+<div class="space-bottom">
+  <div class="candidate-list-header flex-row cross-center">
+    <div class="flex-grow">
+      {{msg_candidate}}
+    </div>
+    <div class="votes" *ngIf="liveResults">
+      {{msg_votes}}
+    </div>
+  </div>
+  <div
+    *ngFor="let cp of candidateParties"
+    class="candidate flex-row cross-center rule-list clickable"
+    (click)="searchForCandidate(cp)"
+    [style.background-image]="cp.backgroundImage" >
+    <candidateimg [candidate]="cp.candidate"></candidateimg>
+    <div class="flex-column flex-grow">
+      <div class="candidate-name">
+        {{cp.candidate.firstName}} {{cp.candidate.lastName}}
+      </div>
+      <div class="candidate-party flex-row cross-center">
+        <svg viewBox="0 0 10 10" class="party-color-dot">
+          <circle cx="5" cy="5" r="5" [attr.fill]="cp.party.color"/>
+        </svg>
+        {{cp.party.name}}
+      </div>
+    </div>
+    <img *ngIf="!liveResults" class="buttons" src="/static/ic_exit_to_search.svg" />
+    <div *ngIf="liveResults" class="flex-column votes cross-center">
+      <!-- Percent argument (in order):
+        Minimum 1 digit before the decimal point
+        Minimum 1 digit after decimal point
+        Maximum 1 digit after decimal point
+      -->
+      <!--
+      TODO(ftamp): `percent` and `decimal` use Intl, which requires a polyfill for many browsers.
+      See https://angular.io/docs/js/latest/api/common/index/DecimalPipe-class.html
+      -->
+      <div class="vote-percent">{{cp.candidate.votesInElectorate.percentage / 100 | percent:'1.1-1'}}</div>
+      <div class="vote-total">{{cp.candidate.votesInElectorate.total | number}}</div>
+    </div>
+  </div>
+</div>

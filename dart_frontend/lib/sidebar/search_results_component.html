@@ -1,0 +1,9 @@
+<div class="search-results" >
+  <div *ngFor="let result of searchResults" class="search-result clickable" (click)="selected(result)">
+    <img class="search-result-image" src="/static/ic_place.svg">
+    <div class="search-result-label">
+      <div class="search-result-text">{{result.description}}</div>
+      <div class="search-result-electorate">Electorate of {{result.electorateName}}</div>
+    </div>
+  </div>
+</div>

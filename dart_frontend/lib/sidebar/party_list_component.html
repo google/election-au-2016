@@ -1,0 +1,46 @@
+<div class="space-bottom">
+  <div class="party-header flex-row cross-center font-small-grey-bold">
+    <div class="flex-grow">
+      {{msg_party}}
+    </div>
+    <div class="votes">
+      {{msg_seats}}
+    </div>
+  </div>
+  <div
+    *ngFor="let pc of displayParties"
+    class="party flex-row rule-list header-gap-below" [class.no-seats]="pc.p.seatsInNation == 0" >
+    <svg viewBox="0 0 10 10">
+      <circle cx="5" cy="5" r="5" [attr.fill]="pc.color"/>
+    </svg>
+    <div class="party-item flex-column flex-grow">
+      <div class="party-name space-bottom">
+        {{pc.p.name}}
+      </div>
+      <!-- Add an NBSP so if there's no leader the spacing still stays the same -->
+      <div class="party-leader flex-row cross-center">
+        {{pc.p.leader}}&nbsp;
+      </div>
+    </div>
+    <div class="flex-column votes cross-center">
+      <!-- Percent argument (in order):
+        Minimum 1 digit before the decimal point
+        Minimum 1 digit after decimal point
+        Maximum 1 digit after decimal point
+      -->
+      <!--
+      TODO(ftamp): `percent` and `decimal` use Intl, which requires a polyfill for many browsers.
+      See https://angular.io/docs/js/latest/api/common/index/DecimalPipe-class.html
+      -->
+      <div class="seats font-mid space-bottom">{{pc.p.seatsInNation | number}}</div>
+      <div class="seats-percent font-small-grey">{{pc.p.seatsInNation / 150 | percent:'1.1-1'}}</div>
+    </div>
+  </div>
+  <div *ngIf="liveResults"
+    class="moreless clickable"
+    (click)="toggleUnelected()">
+    <img *ngIf="showUnelectedParties" src="/static/ic_arrow_up.svg" />
+    <img *ngIf="!showUnelectedParties" src="/static/ic_arrow_down.svg" />
+    {{moreOrLess}}
+  </div>
+</div>

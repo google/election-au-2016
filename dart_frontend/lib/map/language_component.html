@@ -1,0 +1,5 @@
+<div class="language">
+  <select (change)="updateLocale($event.target.value)">
+    <option *ngFor="let language of languages" [value]="language.locale" [selected]="language.selected">{{language.name}}</option>
+  </select>
+</div>

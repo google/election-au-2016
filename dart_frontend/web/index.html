@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Interactive Election Map 2016</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500,400,300,100" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="pub/fnx_config"></script>
+  </head>
+  <body>
+    <div id="loading">
+      <img alt="Loading..." src="/static/loading.gif" />
+    </div>
+    <my-app></my-app>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <!-- TODO: Centralize API key location -->
+    <!-- DO NOT SUBMIT - handle maps API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=INSERT_API_KEY&libraries=geometry,places"></script>
+    <script src="main.dart" type="application/dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<div class="search">
+  <input #searchtext class="search-text" type="text"
+    tabindex="1"
+    [(ngModel)]="searchQuery"
+    [placeholder]="msg_search_placeholder"
+    (keyup.enter)="onEnter()"
+  />
+  <img *ngIf="searchQuery != ''" class="search-button clickable" alt="Clear" src="/static/ic_reset_search.svg"
+    (click)="resetClicked($event)">
+  <img class="search-button" src="/static/ic_search.svg" alt="Search"
+    (click)="searchClicked($event)">
+  <search-results>
+    <div class="search-results">
+      <div *ngFor="let result of searchResults" class="search-result clickable focusable flex-row cross-center" tabindex="2"
+        (click)="selected(result)" (keypress)="keypressSelected($event, result)">
+        <img class="search-result-image" src="/static/ic_place.svg">
+        <div class="search-result-label flex-column flex-grow">
+          <div class="search-result-text">{{result.description}}</div>
+          <div *ngIf="result.electorateName != ''" class="search-result-electorate">Electorate of {{result.electorateName}}</div>
+        </div>
+      </div>
+    </div>
+  </search-results>
+  <search-not-found
+    *ngIf="hasZeroResults"
+    [searchQuery]="searchQuery">
+  </search-not-found>
+</div>

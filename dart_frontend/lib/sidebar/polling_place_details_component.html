@@ -1,0 +1,23 @@
+<div>
+  <div class="place-name">{{name}}</div>
+  <div class="place-address">{{address}}</div>
+  <div class="place-features">
+    <div class="feature place-accessible" *ngIf="isAccessible">
+      <img class="icon" src="/static/ic_accessible.svg" />
+      {{msg_accessible}}
+    </div>
+    <div class="feature place-has-the-saus" *ngIf="hasSausage">
+      <img class="icon" src="/static/ic_sausage.svg" />
+      {{msg_sausage_sizzle}}
+    </div>
+    <div class="feature place-has-cake" *ngIf="hasCake">
+      <img class="icon" src="/static/ic_cake.svg" />
+      {{msg_cake_stall}}
+    </div>
+    <div class="feature place-attribution" *ngIf="stallid != 0">
+      <a target="_blank" href="http://www.electionsausagesizzle.com.au/webpages/electionv2/singleboothmap.aspx?stallid={{stallid}}">
+        {{msg_more_details}}
+      </a>
+    </div>
+  </div>
+</div>

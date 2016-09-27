@@ -1,0 +1,22 @@
+<div>
+  <div>
+    <div
+      class="polling-place clickable flex-row"
+      *ngFor="let place of visiblePollingPlaces"
+      (click)="clickPollingPlace(place)">
+      <pollingplacedetails
+        class="list flex-grow"
+        [place]="place.placeInfo"
+        [election]="election">
+      </pollingplacedetails>
+      <img *ngIf="navigateOnClick" class="buttons" src="/static/ic_directions_grey.svg" />
+    </div>
+  </div>
+  <div *ngIf="canExpand"
+    class="moreless clickable"
+    (click)="toggleAll()">
+    <img *ngIf="showAll" src="/static/ic_arrow_up.svg" />
+    <img *ngIf="!showAll" src="/static/ic_arrow_down.svg" />
+    {{moreOrLess}}
+  </div>
+</div>

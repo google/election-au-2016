@@ -1,0 +1,42 @@
+<div class="electorate">
+  <template [ngIf]="!liveResults">
+    <div class="padding-inset">
+      <h2>{{msg_ballot_paper}}</h2>
+      <candidatelist [liveResults]="false" [electorate]="electorate"></candidatelist>
+    </div>
+  </template>
+  <template [ngIf]="liveResults">
+    <div class="padding-inset header-gap-below">
+      <h2>{{msg_electorate_results}}</h2>
+      <div class="electorate-header-byline">{{ msg_last_updated }}</div>
+      <div class="polling-places-count">{{ msg_tcp_polling_stations_counted }}</div>
+      <twoparty
+        *ngIf="electorateTwoPartyPreferredGuard"
+        [electorate]="electorate">
+      </twoparty>
+    </div>
+    <hr />
+    <div class="padding-inset">
+      <h2>{{msg_first_preference_count}}</h2>
+      <div class="polling-places-count">{{ msg_polling_stations_counted }}</div>
+      <candidatelist [liveResults]="true" [electorate]="electorate"></candidatelist>
+    </div>
+  </template>
+  <div
+    *ngIf="pollingPlaces != null && pollingPlaces.length != 0"
+    class="padding-inset polling-places">
+    <h2 id="polling-places-top">{{msg_polling_places}}</h2>
+    <div class="polling-places-hours">{{ msg_polling_places_hours }}</div>
+    <div class="sausage-data-banner flex-row cross-center">
+      <img class="sausage-data-img" src="/static/sausage_promo_ic_sausage.svg">
+      <div class="sausage-data-text">
+        <div class="sausage-data-tagline">{{ msg_wont_go_hungry }}</div>
+        <div class="sausage-data-live">{{ msg_live_sausage_data }}</div>
+      </div>
+    </div>
+    <pollingplaceslist
+      [pollingPlaces]="pollingPlaces"
+      [election]="election">
+    </pollingplaceslist>
+  </div>
+</div>

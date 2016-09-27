@@ -1,0 +1,37 @@
+name: dart_frontend
+description: A Dart app that uses Angular 2
+version: '0.0.1'
+environment:
+  sdk: '>=1.13.0 <2.0.0'
+
+dependencies:
+  angular2: ^2.0.0-beta.20
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
+  firebase3: ^0.2.0
+  fnx_config: ^1.0.0
+  google_maps: ^3.0.0
+  intl: ^0.13.0
+
+# Making Google Maps and Angular2 beta 20 co-exist
+dependency_overrides:
+  source_gen: ^0.5.0
+
+
+dev_dependencies:
+  grinder: ^0.8.0+1
+  less_dart: ^0.3.3
+
+transformers:
+- less_dart
+- angular2:
+    platform_directives:
+    - 'package:angular2/common.dart#COMMON_DIRECTIVES'
+    platform_pipes:
+    - 'package:angular2/common.dart#COMMON_PIPES'
+    entry_points: web/main.dart
+- dart_to_js_script_rewriter
+- intl:
+    $include:
+    - lib/messages.dart
+- fnx_config

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.3">
+        <g id="02" transform="translate(-352.000000, -265.000000)" fill="#000000">
+            <g id="Group">
+                <g id="candidates" transform="translate(0.000000, 188.000000)">
+                    <g id="candidate01" transform="translate(27.000000, 62.000000)">
+                        <path d="M337,15.5 L326.5,15.5 C325.671,15.5 325,16.171 325,17 L325,20 L326.5,20 L326.5,17 L337,17 L337,27.5 L326.5,27.5 L326.5,24.5 L325,24.5 L325,27.5 C325,28.329 325.671,29 326.5,29 L337,29 C337.829,29 338.5,28.329 338.5,27.5 L338.5,17 C338.5,16.171 337.829,15.5 337,15.5 L337,15.5 Z M330.314,24.939 L331.375,26 L335.125,22.25 L331.375,18.5 L330.314,19.561 L332.253,21.5 L325,21.5 L325,23 L332.253,23 L330.314,24.939 Z" id="Page-1"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

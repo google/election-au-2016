@@ -1,0 +1,12 @@
+<div class="nation">
+  <div class="padding-inset header-gap-below">
+    <div class="font-small-grey header-gap-below nation-header">
+      <h1>{{msg_nation_title}}</h1>
+      {{ msg_update_info }}
+    </div>
+    <halfdonut [parties]="nation.parties"></halfdonut>
+  </div>
+  <div class="padding-inset">
+    <partylist [liveResults]="!nation.historic" [partyMap]="nation.parties"></partylist>
+  </div>
+</div>

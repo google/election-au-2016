@@ -1,0 +1,22 @@
+version: prod
+application: election-au-2016
+runtime: go
+api_version: go1
+
+default_expiration: 30s
+instance_class: F4_1G
+
+handlers:
+- url: /static
+  static_dir: dist/static
+
+- url: /.*
+  script: _go_app
+
+skip_files:
+- ^dart_frontend
+- ^make_dataset
+- ^runlocal
+- ^tools
+- ^serve
+- ^.git

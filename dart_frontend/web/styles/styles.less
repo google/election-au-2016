@@ -1,0 +1,1020 @@
+@black-30p: #B2B2B2;
+@black-34p: #A8A8A8;
+@black-45p: #8C8C8C;
+@black-50p: #7F7F7F;
+@black-54p: #757575;
+@black-67p: #545454;
+@black-70p: #4C4C4C;
+@fluoro-blue: #4285F4;
+
+html, body {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+    overflow:hidden;
+}
+
+// Hide the IE 'X' button on text fields, we've got our own thanks very much.
+::-ms-clear { display: none; }
+
+#loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+}
+
+input[type=text] {
+  border: 1px solid #b3b3b3;
+  background-color: #fff;
+  color: #000;
+  font-size: 13px;
+  line-height: 18px;
+  padding: 6px;
+}
+
+.page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+@side_bar_width: 408px;
+
+.sidebar {
+  width: @side_bar_width;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0px 4px 0px rgba(189,189,189,1);
+  z-index: 1;
+
+  .content {
+    overflow-y: auto;
+    flex-grow: 1;
+    // We need to set z-index -1 here to prevent the 0.5 opacity on un-elected
+    // parties from floating on top of the search results.
+    // See https://philipwalton.com/articles/what-no-one-told-you-about-z-index/
+    z-index: -1;
+  }
+}
+
+.sidebar.hidden {
+  margin-left: -@side_bar_width;
+}
+
+.shrinky {
+  .clickable;
+  position: absolute;
+  top: 0;
+  box-shadow: 2px 0px 4px 0px rgba(189,189,189,1);
+  z-index: 1;
+  width: 21px;
+  height: 65px;
+  opacity: 0.7;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.shrinky.shown {
+  .clickable;
+  left: @side_bar_width;
+}
+
+.shrinky.hidden {
+  left: 0;
+}
+
+.map {
+  flex: 1 0 auto;
+}
+
+.language {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  direction: ltr;
+  overflow: hidden;
+}
+
+.language select {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  -webkit-user-select: none;
+  font-size: 11px;
+  padding: 8px;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -webkit-background-clip: padding-box;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+  min-width: 21px;
+  font-weight: 500;
+  background-color: rgb(255, 255, 255);
+  background-clip: padding-box;
+}
+
+.language option {
+  padding: 8px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.cross-center {
+  align-items: center;
+}
+
+.cross-left {
+  align-items: left;
+}
+
+.cross-right {
+  align-items: right;
+}
+
+.space-bottom {
+  margin-bottom: 8px;
+}
+
+@candidate-image-size: 32px;
+.candidate-image {
+  width: @candidate-image-size;
+  height: @candidate-image-size;
+}
+
+.candidate-image text {
+  font-weight: 200;
+  // 18 px scaled by [img viewbox size]/[img size]
+  font-size: 18px * 100px/@candidate-image-size;
+  fill: #fff;
+}
+
+.font-small {
+  font-size: 12px;
+}
+
+.font-mid {
+  font-size: 14px;
+}
+
+.font-big {
+  font-size: 18px;
+}
+
+.moreless {
+  .font-mid;
+  color: @black-54p;
+  width: 100%;
+
+  padding-top: 18px;
+  padding-bottom: 18px;
+  img {
+    margin-right: 22px;
+  }
+  text-align: left;
+}
+
+.candidate .candidate-name {
+  font-size: 14px;
+}
+
+.candidate .candidate-party {
+  svg.party-color-dot {
+    width: 8px;
+    height: 8px;
+    margin-right: 6px;
+  }
+
+  .font-small-grey;
+
+  // Use padding to the left to align the little coloured dot more nicely.
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.buttons {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+candidatelist .votes {
+  width: 80px;
+}
+
+candidatelist .candidate-list-header {
+  margin-bottom: 4px;
+  .font-small;
+  color: @black-70p;
+}
+
+candidatelist .candidate-list-header .votes {
+  text-align: center;
+}
+
+candidatelist .candidate .votes {
+  border-left: 1px solid #E0E0E0;
+}
+
+.party.no-seats {
+  opacity: 0.5;
+}
+
+.party .party-item {
+  margin-left: 8px;
+}
+
+.party .party-name {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.party svg {
+  width: 8px;
+  height: 8px;
+  margin-top: 18px;
+}
+
+.party .party-leader {
+  .font-small-grey;
+
+  // Use padding to the left to align the little coloured dot more nicely.
+  padding-left: 1px;
+  padding-right: 1px;
+  margin-bottom: 8px;
+}
+
+.party .buttons {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+partylist .space-bottom {
+  margin-top: 16px;
+}
+
+partylist .votes {
+  width: 80px;
+}
+
+partylist .party-header {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(0,0,0,0.54);
+  height: 20px;
+}
+
+partylist .party-header .votes {
+  text-align: center;
+}
+
+partylist .party .votes {
+  border-left: 1px solid #E0E0E0;
+
+  .seats {
+    margin-bottom: 5px;
+  }
+
+  .seats-percent {
+    margin-bottom: 2px;
+  }
+}
+
+.font-small-grey {
+  .font-small;
+  color: @black-54p;
+}
+
+.rule-list {
+  border-top: 1px solid #E0E0E0;
+
+  &:last-of-type {
+    border-bottom: 1px solid #E0E0E0;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background-color: #E1E1E1;
+}
+
+.header {
+  color: #fff;
+  background-color: #bdbdbd;
+  padding: 8px;
+  flex-shrink: 0;
+
+  .info {
+    margin-left: 18px;
+    margin-top: 28px;
+  }
+
+  h1 {
+    padding: 0px;
+    margin: 0px 0px 6px 0px;
+    font-weight: 500;
+    .font-big;
+
+    .trail {
+      font-weight: 300;
+
+      .parent {
+        text-decoration: underline;
+        .clickable;
+      }
+    }
+  }
+
+  .facts {
+    font-size: 13px;
+    margin: 0px 0px 7px 0px;
+  }
+
+  .party {
+    font-size: 13px;
+    margin: 0px 0px 15px 0px;
+
+    img {
+      width: 14px;
+      height: 15px;
+    }
+  }
+}
+
+.electorate-header-byline {
+  .font-small;
+  color: @black-30p;
+}
+
+.electorate {
+  h2 {
+    font-weight: normal;
+    color: @black-54p;
+    margin-top: 0.83em;
+    margin-bottom: 4px;
+    .font-big;
+  }
+
+  .header-gap-below {
+    margin-bottom: 28px;
+  }
+
+  .polling-places-count {
+    .electorate-header-byline;
+    margin-bottom: 20px;
+  }
+}
+
+.padding-inset {
+  padding-left: 26px;
+  padding-right: 8px;
+}
+
+twoparty {
+  .candidate-and-party {
+    margin-bottom: 8px;
+  }
+  candidateimg.left {
+    margin-right: 8px;
+  }
+  candidateimg.right {
+    margin-left: 8px;
+  }
+
+  .votebar {
+    margin-bottom: 4px;
+  }
+
+  .two-party{
+    margin-right: 16px;
+  }
+}
+
+candidatelist {
+  candidateimg {
+    margin-left: 4px;
+    margin-right: 16px;
+  }
+
+  @between-line-spacing: 8px;
+  @above-and-below-spacing: 12px;
+
+  .candidate-name {
+    margin-top: @above-and-below-spacing;
+    margin-bottom: @between-line-spacing;
+  }
+
+  .candidate-party {
+    margin-bottom: @above-and-below-spacing;
+  }
+
+  .vote-percent {
+    .font-mid;
+    margin-bottom: @between-line-spacing;
+  }
+
+  .vote-total {
+    .font-small-grey;
+  }
+}
+
+.polling-places {
+  margin-top: 22px;
+
+  .polling-places-hours {
+    .electorate-header-byline;
+    margin-bottom: 20px;
+  }
+}
+
+pollingplaceslist {
+  display: block;
+
+  .polling-place {
+    .rule-list;
+
+    @polling-place-padding-top: 14px;
+    @polling-place-padding-bottom: 6px;
+
+    padding-top: @polling-place-padding-top;
+    padding-bottom: @polling-place-padding-bottom;
+
+    img.buttons {
+      // Do this to make sure that the icon is visually centered vertically.
+      margin-bottom: @polling-place-padding-top - @polling-place-padding-bottom;
+    }
+  }
+}
+
+pollingplacedetails {
+  display: block;
+
+  .place-name {
+    font-size: 15px;
+  }
+  .place-address {
+    margin-top: 2px;
+    font-size: 14px;
+    color: @black-50p;
+  }
+
+  .place-features {
+    margin-top: 8px;
+
+    a {
+      color: #8c8c8c;
+    }
+
+    .feature {
+      margin-bottom: 2px;
+      font-size: 13px;
+      flex-basis: 50%;
+      color: @black-45p;
+    }
+  }
+  img.icon {
+    width: 16px;
+    height: 16px;
+    // TODO(ftamp): this looks good but I'm not sure why text-top works.
+    vertical-align: text-bottom;
+    margin-right: 4px;
+  }
+
+  .opening-hours {
+    margin-top: 12px;
+    font-size: 11px;
+    color: @black-30p;
+  }
+}
+
+pollingplacedetails.list {
+  .place-features .feature a {
+    color: @black-45p;
+  }
+}
+
+pollingplacedetails.hovercard {
+  padding-top: 8px;
+}
+
+// Popup on the map.
+.placepopup {
+  .flex-row;
+  .cross-center;
+
+  width: 360px;
+  padding-left: 8px;
+  font-weight: normal;
+
+  .directions {
+    .action-link-text;
+    .flex-column;
+    padding: 14px;
+    text-decoration: none;
+  }
+
+  .directions-label {
+    margin-top: 8px;
+  }
+}
+
+.modal-screen {
+  z-index: 10;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.3;
+}
+
+.modal-container {
+  z-index: 10;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.share-dialog-frame {
+  display: table;
+  margin: auto;
+  height: 100%;
+
+  .dialog {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+
+    .content {
+      background: #fff;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+      float: left;
+      padding: 20px;
+      position: relative;
+      text-align: left;
+      box-sizing: border-box;
+
+      h1 {
+        font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        margin: 0;
+        padding-bottom:8px;
+      }
+
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      input {
+        width: 300px;
+      }
+
+      .message {
+        padding-top: 18px;
+        .font-small-grey;
+      }
+    }
+  }
+}
+
+.share-line {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: row;
+  padding: 15px;
+  border-top: thin solid #e6e6e6;
+
+  @media screen and (max-height: 600px) {
+    padding: 4px;
+  }
+}
+
+.action-link-text {
+  text-transform: uppercase;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #3185ff;
+  text-align: center;
+}
+
+.open-external {
+  .action-link-text;
+  flex-grow: 1;
+  padding: 5px;
+  a {
+    text-decoration: initial;
+  }
+  a:link, a:visited, a:hover, a:active {
+    color: #3185ff;
+  }
+
+  display: none;
+  @media screen and (max-height: 600px) {
+    display: unset;
+  }
+
+  .open-external-image {
+    position: relative;
+    top: 2px;
+    padding-left: 5px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.share-link {
+  .clickable;
+  .action-link-text;
+  flex-grow: 1;
+  padding: 5px;
+
+  @media screen and (max-height: 600px) {
+    display: none;
+  }
+}
+
+.attribution {
+  color: @black-45p;
+  font-size: 10px;
+  padding: 10px 0 8px 26px;
+  border-top: thin solid #e6e6e6;
+  flex-shrink: 0;
+
+  a:link, a:visited, a:hover, a:active {
+    color: @black-45p;
+  }
+}
+
+.nation-view {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+  border-radius: 2px;
+  width: 28px;
+  height: 28px;
+  background-color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+
+  img {
+    display: inline-block;
+  }
+}
+
+.search {
+  display: flex;
+  height: 48px;
+  position: relative;
+  background-color: #fff;
+  color: #000;
+}
+
+input[type="text"].search-text {
+  flex-grow: 1;
+  border-style: none;
+  font-size: 15px;
+  padding-left: 18px;
+}
+
+input[type="text"].search-text:placeholder-shown,
+input[type="text"].search-text[placeholder] {
+  text-overflow: ellipsis;
+}
+
+.search-text:focus {
+  outline: none;
+}
+
+.focusable:focus {
+  background-color: #E1E1E1;
+}
+
+.search-text:-ms-input-placeholder {
+  color: @black-34p;
+}
+.search-text::-webkit-input-placeholder {
+  color: @black-34p;
+}
+.search-text::-ms-input-placeholder {
+  color: @black-34p;
+}
+.search-text::-moz-placeholder {
+  color: @black-34p;
+}
+
+.search-button {
+  padding-left: 14px;
+  padding-right: 16px;
+  padding-top: 15px;
+  padding-bottom: 13px;
+}
+
+.search-results {
+  width: @side_bar_width - 16px;
+  position:absolute;
+  background-color: white;
+  top: 48px;
+  left: 0px;
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.3);
+  border-top: solid thin rgba(0,0,0,0.15);
+}
+
+.search-result {
+  height: 56px;
+}
+
+.search-result-image {
+  margin-left: 18px;
+  margin-right: 28px;
+}
+
+.search-result-label {}
+
+.search-result:not(:first-child) {
+  border-top: solid thin rgba(0,0,0,0.1);
+}
+
+.search-result-text {
+  .font-mid;
+  color: @black-50p;
+}
+
+.search-result-electorate {
+  margin-top: 2px;
+  font-size: 12px;
+  color: @fluoro-blue;
+}
+
+.search-not-found {
+  width: @side_bar_width - 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+  height: auto;
+  position:absolute;
+  background-color: white;
+  top: 48px;
+  left: 0px;
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.3);
+  border-top: solid thin rgba(0,0,0,0.15);
+
+  .could-not-find {
+    font-size: 14px;
+  }
+
+  .suggested-action {
+    font-size: 12px;
+    color:rgba(0,0,0,0.7);
+  }
+
+  .google-search {
+    font-size: 12px;
+    a {
+      color: @fluoro-blue;
+      text-decoration: none;
+    }
+  }
+}
+
+.nation-header {
+  font-size: 12px;
+  color: @black-30p;
+  padding: 0px;
+  margin: 0px 0px 20px 0px;
+
+  h1 {
+    color: @black-54p;
+    margin: 18px 0px 4px 0px;
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
+
+halfdonut {
+  margin-left: -14px;
+}
+
+.sidebar search {
+  display: block;
+}
+.search-above-map {
+  display: none;
+}
+
+.directions-icon {
+  width: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// JS breakpoint detection logic. You can determine what breakpoint we're at in
+// JS by checking PageStateService. Currently returns 'mobile' and 'desktop'.
+body:after {
+  display: none;
+  content: 'desktop';
+
+  @media screen and (max-width: 600px) {
+    content: 'mobile';
+  }
+}
+
+// STYLES FOR MOBILE
+@media screen and (max-width: 600px) {
+  body {
+    overflow: auto;
+  }
+
+  .shrinky {
+    display: none;
+  }
+
+  // Never hide the sidebar.
+  .sidebar.hidden {
+    margin-left: inherit;
+  }
+
+  .page {
+    flex-direction: column-reverse;
+    height: auto;
+    width: 100%;
+
+    .sidebar {
+      width: 100%;
+    }
+
+    .nation-view {
+      width: 48px;
+      height: 48px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .map {
+      width: 100%;
+      height: 75vw;
+      // This is the max height of the search results panel, when it has the
+      // maximum number of items.
+      min-height: 281px;
+    }
+
+  }
+
+  .language {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    top: 0px;
+    right: 0px;
+    direction: ltr;
+    overflow: hidden;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  /** Search components */
+  .sidebar search {
+    display: none;
+  }
+  .search-above-map {
+    display: block;
+  }
+  /** End search components */
+
+  input[type="text"].search-text {
+    // 16px prevents iOS browser from zooming in when entering text. (See
+    // http://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone).
+    // Zooming in when entering text makes the rest of the app look weird for
+    // the rest of the session. An alternative would be to set user-scalable=no
+    // in the viewport, but that's bad for accessibility.
+    font-size: 16px;
+  }
+
+  .search-results, .search-not-found {
+    width: 100%;
+  }
+
+  .header {
+    min-height: 100px;
+
+    .info {
+      margin-top: 14px;
+    }
+  }
+
+  .placepopup {
+    // Turn off flex, we want it all vertical.
+    display: block;
+    width: auto;
+
+    .directions {
+      flex-direction: row;
+      .cross-center;
+      padding-left: 0px;
+    }
+
+    .directions-icon {
+      margin-left: 0px;
+      margin-right: 8px;
+    }
+
+    .directions-label {
+      margin-top: 0px;
+    }
+  }
+
+  // Don't show the share line on mobile.
+  // That way, we don't have to deal with the popup dialog.
+  .share-line {
+    display: none;
+  }
+
+  .clickable:hover {
+    background-color: inherit;
+  }
+
+  .padding-inset {
+    padding-left: 16px;
+  }
+
+  halfdonut {
+    margin-left: -6px;
+  }
+}
+
+
+.sausage-data-banner {
+  background-color: rgba(0,0,0,0.1);
+  margin: 18px 14px 12px 0;
+  padding: 8px;
+
+  .sausage-data-img {
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+  }
+
+  .sausage-data-text {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .sausage-data-tagline {
+    .font-big;
+    font-weight: 300;
+    color: @black-67p;
+  }
+
+  .sausage-data-live {
+    font-weight: 300;
+    font-size: 13px;
+    color: @black-67p;
+    margin-top: 6px;
+  }
+}

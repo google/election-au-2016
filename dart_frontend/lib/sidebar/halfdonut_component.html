@@ -1,0 +1,52 @@
+<!-- Donut:
+  height = 120px
+  width = 240px
+  outer Radius = 120px
+  inner Radius = 120 / 2 = 60px
+-->
+<!-- viewBox height = donut height + upper text offset -->
+<svg style="width: 100%; height: 150px" viewBox="0 0 240 150">
+  <defs>
+    <path id="halfdonut" d="
+      M0 150
+      A 120 120 0 1 1 240 150
+      L 180 150
+      A 60 60 0 1 0 60 150
+      Z"
+    stroke="white" stroke-width="1" />
+    <clipPath id="halfdonutClipPath">
+      <path d="
+        M0 150
+        A 120 120 0 1 1 240 150
+        L 180 150
+        A 60 60 0 1 0 60 150
+        Z" />
+    </clipPath>
+  </defs>
+  <!-- fill = #000000 w/ opacity = 0.87 -->
+  <text font-size="12" text-anchor="middle" x="120" y="12" fill="#757575">
+    {{msg_needed_for_majority}}
+  </text>
+  <!-- background -->
+  <g clip-path="url(#halfdonutClipPath)">
+    <use xlink:href="#halfdonut" fill="#F5F5F5" />
+    <use *ngFor="let slice of slices"
+      xlink:href="#halfdonut"
+      [attr.fill]="slice.party.color"
+      [attr.transform]="slice.transform"/>
+  </g>
+  <!--
+  Go from bottom of text to the bottom of the half donut.
+  Bottom of half donut is height - inner circle radius - stroke (1px)
+  Stroke = #000000 w/ opacity = 0.3
+  -->
+  <line stroke="#B2B2B2" stroke-dasharray="5,2.5" stroke-width="2" x1="120" y1="16" x2="120" y2="89"></line>
+  <!-- fill = #000000 w/ opacity = 0.87 -->
+  <text font-size="20" text-anchor="middle" x="120" y="134" fill="#212121">
+    {{msg_num_declared}}/{{msg_num_seats}}
+  </text>
+  <!-- fill = #000000 w/ opacity = 0.54 -->
+  <text font-size="12" text-anchor="middle" x="120" y="149" fill="#757575">
+    {{msg_seats_declared}}
+  </text>
+</svg>
