@@ -32,7 +32,10 @@ You'll need:
 * [Go](https://golang.org/) - ensure GOPATH is set.
 * [Dart](https://www.dartlang.org/)
 * Make
-* If using Appengine [Go Appengine] (https://cloud.google.com/appengine/docs/go/)
+* If using Appengine [Go Appengine](https://cloud.google.com/appengine/docs/go/)
+* A Google Maps [API key](https://developers.google.com/maps/documentation/javascript/get-api-key), 
+  for [the go backend](./go_backend/election.go) and 
+  [the dart frontend](./dart_frontend/web/index.html).
 
 Please also ensure you comply with the various [licenses] (./LICENSE).
 
