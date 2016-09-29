@@ -5,8 +5,9 @@ build: build_dataset build_go build_dart
 build_dataset: dist/national_elb
 
 dist/national_elb: make_dataset/geodata/national_elb
-	mkdir -p dist/national_elb
-	cp -vr make_dataset/geodata/national_elb/ dist/national_elb/
+	mkdir -p dist
+	# Note trailing slashes on the source are significant on BSD systems (i.e. OS X).
+	cp -vr make_dataset/geodata/national_elb dist/
 	touch dist/national_elb
 
 make_dataset/geodata/national_elb:
