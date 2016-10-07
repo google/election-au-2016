@@ -23,8 +23,13 @@ import 'candidate_image_component.dart';
 @Component(
     selector: 'candidatelist',
     templateUrl: 'candidate_list_component.html',
-    directives: const [CandidateImageComponent,],
-    pipes: const [DecimalPipe, PercentPipe])
+    directives: const [
+      CandidateImageComponent,
+    ],
+    pipes: const [
+      DecimalPipe,
+      PercentPipe
+    ])
 class CandidateListComponent {
   List<CandidateParty> candidateParties;
 

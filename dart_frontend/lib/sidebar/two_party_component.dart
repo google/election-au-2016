@@ -23,8 +23,13 @@ import 'candidate_image_component.dart';
 @Component(
     selector: 'twoparty',
     templateUrl: 'two_party_component.html',
-    directives: const [CandidateImageComponent,],
-    pipes: const [PercentPipe, JsonPipe])
+    directives: const [
+      CandidateImageComponent,
+    ],
+    pipes: const [
+      PercentPipe,
+      JsonPipe
+    ])
 class TwoPartyComponent {
   static const DecimalPipe _decimalPipe = const DecimalPipe();
 

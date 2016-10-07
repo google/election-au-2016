@@ -22,7 +22,10 @@ import 'party_list_component.dart';
 @Component(
     selector: 'nation',
     templateUrl: 'nation_component.html',
-    directives: const [HalfDonutComponent, PartyListComponent,])
+    directives: const [
+      HalfDonutComponent,
+      PartyListComponent,
+    ])
 class NationComponent {
   final Messages messages;
 
