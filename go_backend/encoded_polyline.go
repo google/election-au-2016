@@ -97,7 +97,7 @@ func convertToEncodedPolylineFeature(f *geojson.Feature) (*EncodedPolylineFeatur
 		Coordinates: encodedMultiPolygon,
 	}
 	return &EncodedPolylineFeature{
-		ID:          f.ID,
+		ID:          f.ID.(string),
 		Type:        f.Type,
 		BoundingBox: f.BoundingBox,
 		Geometry:    encodedGeom,
